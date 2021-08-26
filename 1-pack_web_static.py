@@ -20,11 +20,11 @@ def do_pack():
         os.mkdir('versions')
 
     # create the file name
-    file = './versions/web_static_{}.tgz'.format(date)
+    file = 'versions/web_static_{}.tgz'.format(date)
 
     # compressing files
     to_tgz = local('tar -cvzf {} web_static'.format(file))
     if to_tgz.failed:
         return None
     else:
-        return "{}".format(file)
+        return "./{}".format(file)
