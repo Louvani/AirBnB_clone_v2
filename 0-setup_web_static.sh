@@ -9,7 +9,11 @@ then
 fi
 
 # create folders
+sudo mkdir -p /data/
+sudo mkdir -p /data/web_static/
+sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/releases/test/
+sudo mkdir -p /data/web_static/
 sudo mkdir -p /data/web_static/shared/
 
 # Creating html file
