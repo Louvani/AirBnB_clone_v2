@@ -30,7 +30,7 @@ echo "<html>
 ln -s -f /data/web_static/releases/test/ /data/web_static/current
 
 #  Nginx configuration to serve the content
-sudo sed -i '/server_name localhost;/a location /hbnb_static {\n\talias /data/web_static/current/;\n}' /etc/nginx/sites-enabled/default
+sudo sed -i '/server_name _;/a location /hbnb_static {\n\talias /data/web_static/current/;\n}' /etc/nginx/sites-enabled/default
 
 # restart
 sudo service nginx restart
