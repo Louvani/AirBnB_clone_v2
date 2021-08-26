@@ -26,4 +26,4 @@ def do_pack():
     if to_tgz.failed:
         return None
     else:
-        return "./{}".format(file)
+        return "{}".format(file)
