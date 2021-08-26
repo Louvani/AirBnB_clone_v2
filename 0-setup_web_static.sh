@@ -13,7 +13,7 @@ sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 
 # permissions
-sudo chown -R ubuntu /data/
+sudo chown -R ubuntu:ubuntu /data/
 sudo chmod -R 755 /data/
 
 # Creating html file
