@@ -44,7 +44,7 @@ def do_deploy(archive_path):
         return False
 
     # Delete the symbolic link /data/web_static/current from the web server
-    rm = run('rm -rf /data/web_static/currnt')
+    rm = run('rm -rf /data/web_static/current')
     if rm.failed:
         return False
 
