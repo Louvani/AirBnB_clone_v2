@@ -6,7 +6,7 @@ import os
 from fabric.api import env, run, put
 
 env.hosts = ['3.89.116.12', '54.89.68.173']
-
+env.user = 'ubuntu'
 
 def do_deploy(archive_path):
     '''distributes an archive to your web servers'''
@@ -21,23 +21,25 @@ def do_deploy(archive_path):
     # create the folder
     file_ext = archive_path.split('/')[1]
     file = file_ext.split('.')[0]
+
     folder = run('mkdir -p /data/web_static/releases/{}'.format(file))
     if folder.failed:
         return False
 
     # Uncompress the archive to the folder
     uncom = run(
-        'tar -xzf /tmp/{} -C /data/web_static/releases/{}/'.format(
+        'tar -xzf /tmp/{} -C /data/web_static/releases/{}'.format(
             file_ext, file))
     if uncom.failed:
         return False
+    # Move files
     mv = run('mv /data/web_static/releases/{}/web_static/* \
-        /data/web_static/releases/{}/'.format(file, file))
+        /data/web_static/releases/{}'.format(file, file))
     if mv.failed:
         return False
 
-    # Delete the archive from the web server
-    delete = run('rm rm /tmp/{}'.format(file_ext))
+    # Delete the archive from the /tmp/
+    delete = run('rm /tmp/{}'.format(file_ext))
     if delete.failed:
         return False
 
